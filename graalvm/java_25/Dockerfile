@@ -1,7 +1,6 @@
 FROM ubuntu:22.04
 
 ENV DEBIAN_FRONTEND=noninteractive
-ENV JAVA_VERSION=25
 
 RUN apt-get update -y \
     && apt-get install -y curl tar \
@@ -15,6 +14,8 @@ RUN curl -fsSL https://github.com/graalvm/graalvm-ce-builds/releases/download/jd
 ENV JAVA_HOME=/opt/graalvm
 ENV PATH="$JAVA_HOME/bin:$PATH"
 
-RUN useradd -m -d /home/container -s /bin/bash container
+RUN groupadd -g 998 container \
+    && useradd -u 998 -g 998 -m -d /home/container -s /bin/bash container
+
 WORKDIR /home/container
 USER container
