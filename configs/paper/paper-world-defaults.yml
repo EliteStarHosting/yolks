@@ -45,7 +45,7 @@ chunks:
     small_fireball: 8
     snowball: 8
   fixed-chunk-inhabited-time: -1
-  max-auto-save-chunks-per-tick: 24
+  max-auto-save-chunks-per-tick: 6
   prevent-moving-into-unloaded-chunks: false
 collisions:
   allow-vehicle-collisions: true
@@ -222,7 +222,7 @@ misc:
   disable-relative-projectile-velocity: false
   disable-sprint-interruption-on-attack: false
   max-leash-distance: 10.0
-  redstone-implementation: VANILLA
+  redstone-implementation: ALTERNATE_CURRENT
   shield-blocking-delay: 5
   show-sign-messages-to-admins: false
   update-pathfinding-on-block-update: true
@@ -238,9 +238,9 @@ tick-rates:
     villager:
       validatenearbypoi: -1
       acquirepoi: 200
-  container-update: 1
+  container-update: 3
   grass-spread: 4
-  mob-spawner: 1
+  mob-spawner: 2
   sensor:
     villager:
       secondarypoisensor: 40
