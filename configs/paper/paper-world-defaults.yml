@@ -237,7 +237,7 @@ tick-rates:
   behavior:
     villager:
       validatenearbypoi: -1
-      acquirepoi: default
+      acquirepoi: 200
   container-update: 1
   grass-spread: 4
   mob-spawner: 1
