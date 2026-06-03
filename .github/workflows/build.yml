@@ -26,6 +26,7 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v5
         with:
-          context: ./graalvm/java_${{ matrix.java }}
+          context: ./graalvm
+          file: ./graalvm/java_${{ matrix.java }}/Dockerfile
           push: true
           tags: ghcr.io/elitestarhosting/yolks:java_${{ matrix.java }}_graal

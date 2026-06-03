@@ -3,7 +3,7 @@ FROM ubuntu:22.04
 ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update -y \
-    && apt-get install -y curl tar \
+    && apt-get install -y lsof curl ca-certificates openssl git tar sqlite3 fontconfig libfreetype6 tzdata iproute2 libstdc++6 \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
@@ -14,8 +14,11 @@ RUN curl -fsSL https://github.com/graalvm/graalvm-ce-builds/releases/download/jd
 ENV JAVA_HOME=/opt/graalvm
 ENV PATH="$JAVA_HOME/bin:$PATH"
 
-RUN groupadd -g 998 container \
-    && useradd -u 998 -g 998 -m -d /home/container -s /bin/bash container
+RUN useradd -d /home/container -m container
 
-WORKDIR /home/container
 USER container
+ENV USER=container HOME=/home/container
+WORKDIR /home/container
+
+COPY ./../entrypoint.sh /entrypoint.sh
+CMD [ "/bin/bash", "/entrypoint.sh" ]
